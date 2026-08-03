@@ -23,7 +23,7 @@ function Home() {
                     <div className="mt-10 bg-white rounded-lg p-6 shadow">
 
                         <h2 className="text-xl font-bold mb-4">
-                            Extracted Resume
+                            Extracted Resume Text
                         </h2>
 
                         <pre className="whitespace-pre-wrap text-sm">
