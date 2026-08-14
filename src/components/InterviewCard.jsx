@@ -1,21 +1,15 @@
 function InterviewCard({ questions }) {
   return (
-    <article className="rounded-[1.75rem] border border-slate-200 bg-white p-6 shadow-lg shadow-slate-900/5">
-      <p className="text-sm uppercase tracking-[0.24em] text-indigo-600">Interview prep</p>
-      <h2 className="mt-4 text-xl font-semibold text-slate-900">Potential questions</h2>
-      <ol className="mt-4 space-y-3 text-sm text-slate-700">
-        {questions?.length ? (
-          questions.map((question, index) => (
-            <li key={index} className="rounded-3xl bg-slate-50 p-4">
-              <span className="font-semibold text-indigo-700">Q{index + 1}.</span> {question}
-            </li>
-          ))
-        ) : (
-          <li className="text-slate-500">No interview questions generated yet.</li>
-        )}
+    <article className="smartcv-result-card smartcv-list-card">
+      <p className="eyebrow">Interview prep</p>
+      <h2 className="smartcv-card-title">Potential questions</h2>
+      <ol className="smartcv-result-list">
+        {questions?.length ? questions.map((question, index) => (
+          <li key={`${question}-${index}`}><span className="smartcv-list-index">Q{index + 1}</span><span>{question}</span></li>
+        )) : <li className="smartcv-empty-state">No interview questions generated yet.</li>}
       </ol>
     </article>
   )
 }
 
-export default InterviewCard;
+export default InterviewCard
