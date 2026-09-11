@@ -1,46 +1,54 @@
-import { useState } from 'react'
+import { useRef, useEffect } from 'react'
 import { HiCheckCircle } from 'react-icons/hi'
+import { HiX } from 'react-icons/hi'
 
-function UploadBox({ onUpload, loading }) {
-  const [file, setFile] = useState(null)
+function UploadBox({ file, onFileSelect, onRemove, uploaded }) {
+  const inputRef = useRef(null)
 
-  const handleClick = () => {
-    if (!file) {
-      alert('Please select a PDF resume')
-      return
+  useEffect(() => {
+    if (!uploaded && !file) {
+      if (inputRef.current) inputRef.current.value = ''
     }
+  }, [uploaded, file])
 
-    onUpload(file)
+  const handleRemove = () => {
+    if (inputRef.current) inputRef.current.value = ''
+    onRemove?.()
   }
 
   return (
     <div>
-
       <div className="smartcv-upload-controls">
         <label className="smartcv-file-picker">
           <input
+            ref={inputRef}
             type="file"
             accept=".pdf"
             className="hidden"
-            onChange={(event) => setFile(event.target.files?.[0] ?? null)}
+            onChange={(event) => onFileSelect?.(event.target.files?.[0] ?? null)}
+            disabled={uploaded}
           />
           {file ? (
-            <span className="inline-flex items-center gap-2 text-slate-900">
+            <span className="file-label text-slate-900">
               <HiCheckCircle className="h-5 w-5 text-emerald-500" />
               {file.name}
             </span>
           ) : (
-            'Choose file…'
+            <span className="file-label">
+              {uploaded ? <><HiCheckCircle className="h-5 w-5 text-emerald-500" />Uploaded</> : 'Choose file…'}
+            </span>
           )}
         </label>
 
-        <button
-          onClick={handleClick}
-          disabled={loading}
-          className="smartcv-upload-button"
-        >
-          {loading ? 'Analyzing...' : 'Upload Resume'}
-        </button>
+        {file && (
+          <button
+            onClick={handleRemove}
+            className="smartcv-rm-button"
+            aria-label="Remove selected resume"
+          >
+            <HiX className="h-5 w-5 text-slate-700" />
+          </button>
+        )}
       </div>
     </div>
   )

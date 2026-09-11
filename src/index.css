@@ -269,3 +269,240 @@ a {
   .smartcv-footer-main, .smartcv-footer-links { grid-template-columns: 1fr; gap: 34px; padding: 42px 0 32px; }
   .smartcv-footer-bottom { flex-direction: column; padding: 18px 0; }
 }
+
+/* Home page layout for the SmartCV landing design */
+.smartcv-homepage {
+  width: min(100%, 1240px);
+  margin: 0 auto;
+  padding: 28px 0 48px;
+}
+
+.smartcv-input-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 26px;
+}
+
+.smartcv-input-panel {
+  position: relative;
+  min-height: 500px;
+  padding: 26px 28px 22px;
+  background: rgba(255, 255, 255, 0.58);
+  border: 1px solid var(--slate-200);
+  border-radius: 28px;
+  box-shadow: var(--shadow-card);
+}
+
+.smartcv-panel-label {
+  margin-bottom: 10px;
+  color: var(--indigo-600);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.smartcv-input-panel h2 {
+  margin: 0 0 20px;
+  color: var(--slate-900);
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 2.4vw, 3rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.06em;
+}
+
+.smartcv-panel-copy {
+  margin: 0 0 20px;
+  color: var(--slate-600);
+  font-size: 1.02rem;
+  line-height: 1.5;
+}
+
+.smartcv-job-panel {
+  display: flex;
+  flex-direction: column;
+}
+
+.smartcv-job-panel .smartcv-textarea {
+  width: 100%;
+  min-height: 350px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--slate-900);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  box-shadow: none;
+  resize: none;
+}
+
+.smartcv-job-panel .smartcv-textarea:focus {
+  border: 0;
+  box-shadow: none;
+}
+
+.smartcv-upload-panel {
+  display: flex;
+  flex-direction: column;
+}
+
+.smartcv-upload-controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 10px;
+}
+
+.smartcv-file-picker {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  min-width: 0;
+  height: 76px;
+  padding: 0 18px;
+  border: 1px dashed #cbd5e1;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.7);
+  color: var(--slate-500);
+  font-size: 1.05rem;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.smartcv-file-picker:hover {
+  border-color: var(--indigo-600);
+  background: rgba(224, 231, 255, 0.25);
+}
+
+.smartcv-file-picker .file-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.smartcv-upload-button {
+  flex-shrink: 0;
+  min-width: 190px;
+  height: 76px;
+  padding: 0 28px;
+  border: 0;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #4f46e5, #5b52d9);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 1.03rem;
+  font-weight: 800;
+  box-shadow: 0 16px 24px -18px rgba(79, 70, 229, 0.9);
+  cursor: pointer;
+  transition: transform 0.18s ease, filter 0.18s ease;
+}
+
+.smartcv-upload-button:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.03);
+}
+
+.smartcv-upload-button:disabled {
+  background: #cbd5e1;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.smartcv-rm-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border: 1px solid var(--slate-200);
+  border-radius: 12px;
+  background: var(--slate-50);
+  color: var(--slate-700);
+  cursor: pointer;
+}
+
+.smartcv-rm-button:hover {
+  background: var(--slate-100);
+}
+
+.smartcv-analyze-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 28px;
+}
+
+.smartcv-analyze-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 160px;
+  padding: 0.95rem 2.9rem;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  border-radius: 999px;
+  background: linear-gradient(135deg, #4f46e5, #5b52d9);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  font-weight: 800;
+  box-shadow: 0 16px 24px -18px rgba(79, 70, 229, 0.9);
+  cursor: pointer;
+  transition: transform 0.18s ease, filter 0.18s ease, opacity 0.18s ease;
+}
+
+.smartcv-analyze-button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  filter: brightness(1.04);
+}
+
+.smartcv-analyze-button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  color: var(--white);
+}
+
+@media (max-width: 700px) {
+  .smartcv-homepage {
+    width: min(100% - 28px, 1240px);
+    padding-top: 18px;
+  }
+
+  .smartcv-input-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .smartcv-input-panel {
+    min-height: auto;
+    padding: 22px 18px 18px;
+  }
+
+  .smartcv-input-panel h2 {
+    font-size: 2.1rem;
+  }
+
+  .smartcv-job-panel .smartcv-textarea {
+    min-height: 230px;
+  }
+
+  .smartcv-upload-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .smartcv-file-picker,
+  .smartcv-upload-button {
+    width: 100%;
+    min-width: 0;
+    height: 64px;
+  }
+
+  .smartcv-analyze-wrap {
+    margin-top: 18px;
+  }
+}
