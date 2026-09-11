@@ -1,16 +1,45 @@
-# React + Vite
+# Smart CV Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> 🚀 **Live Demo →** [https://smart-cv-frontend-seven.vercel.app/](https://smart-cv-frontend-seven.vercel.app/)
 
-Currently, two official plugins are available:
+An AI-powered resume reviewer and ATS analyzer built with React + Vite, backed by a FastAPI service.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
 
-## React Compiler
+- 📄 Upload a PDF resume and paste a job description
+- 🤖 AI analysis via Google Gemini
+- 📊 ATS score, matched & missing skills, suggestions, and interview prep questions
+- ⚡ Auto-wakes the Render backend on page load (no cold-start delay for the user)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech Stack
 
-## Expanding the ESLint configuration
+| Layer    | Technology           |
+|----------|----------------------|
+| Frontend | React 18 + Vite      |
+| Styling  | Vanilla CSS          |
+| HTTP     | Axios                |
+| Deploy   | Vercel               |
+| Backend  | FastAPI (on Render)  |
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Run locally
+
+1. Install dependencies:
+
+```bash
+cd smart_cv_frontend
+npm install
+```
+
+2. Create a `.env` file:
+
+```env
+VITE_API_BASE_URL=http://127.0.0.1:8000/api/v1
+```
+
+3. Start the dev server:
+
+```bash
+npm run dev
+```
+
+> The backend must also be running locally. See the [backend README](../smart_cv_backend/README.md).
