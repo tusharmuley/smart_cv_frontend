@@ -466,6 +466,81 @@ a {
   color: var(--white);
 }
 
+.smartcv-progress-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  margin: 24px auto 0;
+  max-width: 640px;
+  padding: 18px 20px;
+  border: 1px solid rgba(99, 102, 241, 0.12);
+  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(79, 70, 229, 0.04), rgba(14, 165, 233, 0.04));
+  box-shadow: 0 14px 35px -24px rgba(79, 70, 229, 0.45);
+}
+
+.smartcv-progress-spinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  padding: 16px 18px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  font-weight: 700;
+  color: var(--slate-800);
+}
+
+.smartcv-progress-spinner .spinner-ring {
+  width: 22px;
+  height: 22px;
+  border: 3px solid rgba(148, 163, 184, 0.45);
+  border-top-color: #4f46e5;
+  border-radius: 50%;
+  animation: smartcv-spin 1s linear infinite;
+}
+
+.smartcv-progress-dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.smartcv-progress-dots span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #6366f1;
+  animation: smartcv-bounce 1.2s ease-in-out infinite;
+}
+
+.smartcv-progress-dots span:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.smartcv-progress-dots span:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+@keyframes smartcv-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes smartcv-bounce {
+  0%, 80%, 100% {
+    opacity: 0.35;
+    transform: scale(0.8);
+  }
+  40% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+
 @media (max-width: 700px) {
   .smartcv-homepage {
     width: min(100% - 28px, 1240px);
@@ -504,5 +579,14 @@ a {
 
   .smartcv-analyze-wrap {
     margin-top: 18px;
+  }
+
+  .smartcv-progress-panel {
+    padding: 14px 12px;
+  }
+
+  .smartcv-progress-spinner {
+    font-size: 0.95rem;
+    padding: 14px 12px;
   }
 }

@@ -108,6 +108,23 @@ function Home() {
                 </button>
             </div>
 
+            {(uploading || analyzing) && (
+                <div className="smartcv-progress-panel" aria-live="polite">
+                    <LoadingSpinner
+                        label={
+                            analyzing
+                                ? 'AI is reviewing your resume and matching it to the job description...'
+                                : 'Uploading your resume and extracting text from the PDF...'
+                        }
+                    />
+                    <div className="smartcv-progress-dots" aria-hidden="true">
+                        <span />
+                        <span />
+                        <span />
+                    </div>
+                </div>
+            )}
+
             {errorMessage && (
                 <div className="smartcv-error" role="alert">
                     <strong>Analysis could not be completed.</strong> {errorMessage}
