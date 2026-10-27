@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, NavLink, useLocation } from 'react-router-dom'
 import { HiMenu, HiX, HiSparkles } from 'react-icons/hi'
 
 function Navbar() {
@@ -7,16 +7,15 @@ function Navbar() {
   const location = useLocation()
 
   const navLinks = [
-    { name: 'Home', href: '/#hero' },
-    { name: 'Resume setup', href: '/#upload' },
-    { name: 'Your results', href: '/#results' },
+    { name: 'Home', to: '/', exact: true },
+    { name: 'Resume setup', to: '/#upload' },
+    { name: 'Your results', to: '/#results' },
   ]
 
   return (
     <header className="smartcv-header">
       <div className="smartcv-header-inner">
         <div className="smartcv-header-row">
-          {/* Brand */}
           <Link to="/" className="smartcv-brand" onClick={() => setMobileMenuOpen(false)}>
             <div className="smartcv-brand-mark">
               <HiSparkles aria-hidden="true" />
@@ -27,28 +26,39 @@ function Navbar() {
             </div>
           </Link>
 
-          {/* Desktop Navigation */}
           <nav className="smartcv-desktop-nav" aria-label="Primary navigation">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className={`smartcv-nav-link ${location.pathname === '/' && link.name === 'Home' ? 'is-active' : ''}`}
-              >
-                {link.name}
-              </a>
-            ))}
+            {navLinks.map((link) => {
+              const isCurrent =
+                link.exact
+                  ? location.pathname === '/'
+                  : location.pathname === '/'
+
+              return (
+                <Link
+                  key={link.name}
+                  to={link.to}
+                  className={`smartcv-nav-link ${isCurrent ? 'is-active' : ''}`}
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {link.name}
+                </Link>
+              )
+            })}
+
+            <NavLink
+              to="/bulk-apply"
+              className={({ isActive }) =>
+                `smartcv-header-nav-pill ${isActive ? 'is-active' : ''}`
+              }
+            >
+              Bulk Apply
+            </NavLink>
           </nav>
 
-          {/* CTA Button - Desktop */}
-          <Link
-            to="/analyze"
-            className="smartcv-header-cta"
-          >
+          <Link to="/analyze" className="smartcv-header-cta">
             Analyze Resume →
           </Link>
 
-          {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="smartcv-menu-button"
@@ -56,26 +66,32 @@ function Navbar() {
             aria-expanded={mobileMenuOpen}
           >
             {mobileMenuOpen ? (
-              <HiX className="w-6 h-6 text-slate-900" />
+              <HiX className="h-6 w-6 text-slate-900" />
             ) : (
-              <HiMenu className="w-6 h-6 text-slate-900" />
+              <HiMenu className="h-6 w-6 text-slate-900" />
             )}
           </button>
         </div>
 
-        {/* Mobile Navigation */}
         {mobileMenuOpen && (
           <nav className="smartcv-mobile-nav" aria-label="Mobile navigation">
             {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
+              <Link
+                key={link.name}
+                to={link.to}
                 className="smartcv-mobile-link"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {link.name}
-              </a>
+              </Link>
             ))}
+            <NavLink
+              to="/bulk-apply"
+              className="smartcv-mobile-cta"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Bulk Apply
+            </NavLink>
             <Link
               to="/analyze"
               className="smartcv-mobile-cta"
